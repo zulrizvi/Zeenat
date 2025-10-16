@@ -1,12 +1,8 @@
 {
-			"builds": [
-				{
-						"src": "react-page-flip-main/package.json",
-					"use": "@vercel/static-build"
-				}
-			],
-	"routes": [
-		{ "handle": "filesystem" },
-		{ "src": "/.*", "dest": "/index.html" }
+	"buildCommand": "cd react-page-flip-main && yarn install --frozen-lockfile && yarn build",
+	"outputDirectory": "react-page-flip-main/dist",
+	"rewrites": [
+		{ "source": "/", "destination": "/react-page-flip-main/dist/index.html" },
+		{ "source": "/(.*)", "destination": "/react-page-flip-main/dist/$1" }
 	]
 }
