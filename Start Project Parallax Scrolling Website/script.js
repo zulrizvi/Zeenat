@@ -455,7 +455,8 @@ function initFlipbookModal() {
 
 	// Prefer Vite dev server (default 5173). Keep built output as fallback reference
 	const devURL = 'http://localhost:5173/';
-	const builtIndex = '../react-page-flip-main/dist/index.html';
+	const builtIndex = '/flipbook/index.html';
+	const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 
 	// Hide hint once iframe loads
 	frame.addEventListener('load', () => { if (hint) hint.style.display = 'none'; });
@@ -464,9 +465,13 @@ function initFlipbookModal() {
 		e && e.preventDefault();
 		// Load once
 		if (!frame.src) {
-			// Point to dev server; if not running, user can build or start dev
-			frame.src = devURL;
-			if (hint) hint.style.display = 'block';
+			if (isLocal) {
+				frame.src = devURL;
+				if (hint) hint.style.display = 'block';
+			} else {
+				frame.src = builtIndex;
+				if (hint) hint.style.display = 'none';
+			}
 		}
 		modal.setAttribute('aria-hidden', 'false');
 		document.documentElement.style.overflow = 'hidden';

@@ -1,8 +1,4 @@
 {
-	"buildCommand": "cd react-page-flip-main && yarn install --frozen-lockfile && yarn build",
-	"outputDirectory": "react-page-flip-main/dist",
-	"rewrites": [
-		{ "source": "/", "destination": "/react-page-flip-main/dist/index.html" },
-		{ "source": "/(.*)", "destination": "/react-page-flip-main/dist/$1" }
-	]
+  "buildCommand": "cd react-page-flip-main && yarn install --frozen-lockfile && yarn build && cd .. && node build-output.js",
+  "outputDirectory": "web-dist"
 }
