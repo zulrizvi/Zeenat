@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "react-page-flip-main/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/react-page-flip-main/(.*)",
+      "dest": "/react-page-flip-main/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Start%20Project%20Parallax%20Scrolling%20Website/$1"
+    }
+  ]
+}
