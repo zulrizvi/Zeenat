@@ -76,7 +76,7 @@ const pages = [
     name: "Khwabiida",
     types: ["Khwab", "Neend"],
     description:
-      "Soe hue hirni ke maanind jo lagte ho yaqeenan khwab me khud se mulaaqaat ki hogi apane",
+      "Soe hue hirni ke maanind jo lagte ho yaqeenan khwab me khud se mulaaqaat ki hogi aapne",
     image: "/7.jpg",
     backgroundSrc: "CoverBG.png",
     background: "linear-gradient(145deg, rgba(116,185,255,0.8) 0%, rgba(162,155,254,0.8) 100%)",
