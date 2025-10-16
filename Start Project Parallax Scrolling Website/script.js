@@ -453,25 +453,21 @@ function initFlipbookModal() {
 	const hint = document.getElementById('flipbookHint');
 	if (!trigger || !modal || !frame) return;
 
-	// Prefer Vite dev server (default 5173). Use built output at the absolute deployed path as fallback
+	// Prefer Vite dev server (default 5173). Keep built output as fallback reference
 	const devURL = 'http://localhost:5173/';
-	// Vercel exposes the built React app under /react-page-flip-main/ (see build output). Use absolute path so iframe can find it.
-	const builtIndex = '/react-page-flip-main/index.html';
+	const builtIndex = '../react-page-flip-main/dist/index.html';
 
 	// Hide hint once iframe loads
 	frame.addEventListener('load', () => { if (hint) hint.style.display = 'none'; });
 
 	const openModal = (e) => {
 		e && e.preventDefault();
-			// Load once: use the Vite dev server only when running locally (localhost).
-			// In production (deployed on Vercel) we should point the iframe to the built flipbook index.
-			if (!frame.src) {
-				const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-				const defaultSrc = isLocal ? devURL : builtIndex; // dev for local dev, built index for deployed site
-				frame.src = defaultSrc;
-				// show the hint only when pointing at the dev server so users know it's a live preview
-				if (hint && isLocal) hint.style.display = 'block';
-			}
+		// Load once
+		if (!frame.src) {
+			// Point to dev server; if not running, user can build or start dev
+			frame.src = devURL;
+			if (hint) hint.style.display = 'block';
+		}
 		modal.setAttribute('aria-hidden', 'false');
 		document.documentElement.style.overflow = 'hidden';
 	};
