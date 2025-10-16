@@ -8,13 +8,13 @@
 // - Use a gradient/string in `coverBackground`
 // - Or put an image in src/assets and set `coverBackgroundSrc` to the filename
 export const coverBackground = "linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)"; // e.g., gradient
-export const coverBackgroundSrc = "CoverBG.png"; // e.g., an image in src/assets (set to null to use gradient)
+export const coverBackgroundSrc = "frontpage.png"; // e.g., an image in src/assets (set to null to use gradient)
 
 const pages = [
   {
     id: "001",
-    name: "Gulabo ka Shajar",
-    types: ["Khuub", "Adventure"],
+    name: "Phulo ka safar",
+    types: ["Khuub", "Phuul"],
     description:
       "Embark on an incredible journey through the world of Pokémon. Discover new friends and face exciting challenges.",
     image: "/1.jpg",
@@ -28,7 +28,7 @@ const pages = [
     description:
       "Join trainers as they battle through gyms and form unbreakable bonds with their Pokémon companions.",
     image: "/2.jpg",
-    backgroundSrc: "CoverBG.png",
+    backgroundSrc: "coverBG2.jpeg",
     background: "linear-gradient(145deg, rgba(72,52,212,0.7) 0%, rgba(104,109,224,0.7) 100%)",
   },
   {
@@ -38,7 +38,7 @@ const pages = [
     description:
       "Venture into uncharted territories where legendary Pokémon await. Every step brings new discoveries.",
     image: "/3.jpg",
-    backgroundSrc: "CoverBG.png",
+    backgroundSrc: "coverBG3.png",
     background: "linear-gradient(145deg, rgba(0,210,211,0.8) 0%, rgba(84,160,255,0.8) 100%)",
   },
   {
@@ -58,7 +58,7 @@ const pages = [
     description:
       "The final chapter where destinies are fulfilled and legends are born. The greatest adventure concludes here.",
     image: "/5.jpg",
-    backgroundSrc: "CoverBG.png",
+    backgroundSrc: "coverBG2.jpeg",
     background: "linear-gradient(145deg, rgba(255,159,243,0.8) 0%, rgba(243,104,224,0.8) 100%)",
   },
   {
@@ -68,7 +68,7 @@ const pages = [
     description:
       "Witness the incredible power of evolution as Pokémon reach their ultimate forms through bonds of trust and training.",
     image: "/6.jpg",
-    backgroundSrc: "CoverBG.png", 
+    backgroundSrc: "coverBG3.png",
     background: "linear-gradient(145deg, rgba(255,184,77,0.8) 0%, rgba(255,121,63,0.8) 100%)",
   },
   {

@@ -40,14 +40,15 @@ function Book() {
         const bgImage = pokemon.backgroundSrc
           ? new URL(`../assets/${pokemon.backgroundSrc}`, import.meta.url).href
           : null;
+        // Dim the background by layering a semi-transparent black gradient on top of the image
         const pageContentStyle = bgImage
           ? {
-              backgroundImage: `url(${bgImage})`,
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${bgImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
             }
-          : (pokemon.background ? { background: pokemon.background } : {});
+          : (pokemon.background ? { background: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), ${pokemon.background}` } : {});
 
         return (
           <div className="page" key={pokemon.id} style={{ background: 'transparent' }}>
@@ -55,16 +56,16 @@ function Book() {
             <div className="pokemon-container">
               <img src={pokemon.image} alt={pokemon.name} loading="lazy" decoding="async" />
               <div className="pokemon-info">
-                <h2 className="pokemon-name">{pokemon.name}</h2>
-                <p className="pokemon-number">#{pokemon.id}</p>
+                <h2 className="pokemon-name" style={{ color: '#fff' }}>{pokemon.name}</h2>
+                <p className="pokemon-number" style={{ color: '#fff' }}>#{pokemon.id}</p>
                 <div>
                   {pokemon.types.map((type) => (
-                    <span key={type} className={`pokemon-type type-${type.toLowerCase()}`}>
+                    <span key={type} className={`pokemon-type type-${type.toLowerCase()}`} style={{ color: '#fff' }}>
                       {type}
                     </span>
                   ))}
                 </div>
-                <p className="pokemon-description">{pokemon.description}</p>
+                <p className="pokemon-description" style={{ color: '#fff' }}>{pokemon.description}</p>
               </div>
             </div>
             </div>
