@@ -8,13 +8,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/react-page-flip-main/(.*)",
-      "dest": "/react-page-flip-main/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/Start%20Project%20Parallax%20Scrolling%20Website/$1"
-    }
+    { "src": "^/$", "dest": "/react-page-flip-main/dist/index.html" },
+    { "src": "^/(.*)$", "dest": "/react-page-flip-main/dist/$1" }
   ]
 }
