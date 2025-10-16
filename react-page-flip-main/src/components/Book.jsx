@@ -1,0 +1,78 @@
+import React from 'react'
+import HTMLFlipBook from "react-pageflip";
+import pages, { coverBackground, coverBackgroundSrc } from "../data/bookData";
+
+function Book() {
+
+  const pokemonData = pages;
+  // Decide cover background precedence: image wins over CSS background
+  const coverStyle = coverBackgroundSrc
+    ? {
+        backgroundImage: `url(${new URL(`../assets/${coverBackgroundSrc}`, import.meta.url).href})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }
+    : (coverBackground
+        ? { background: coverBackground }
+        : {});
+
+  return (
+    <HTMLFlipBook 
+      width={370} 
+      height={500}
+      maxShadowOpacity={0.5}
+      drawShadow={true}
+      showCover={true}
+      size='fixed'
+    >
+      <div className="page" style={{ background: 'transparent' }}>
+        <div className="page-content cover" style={coverStyle}>
+          <img
+            src={new URL("../assets/BandariyaNOBG.png", import.meta.url).href}
+            alt="Bandariya"
+            className="pokemon-logo"
+          />
+        </div>
+      </div>
+
+      {pokemonData.map((pokemon) => {
+        const bgImage = pokemon.backgroundSrc
+          ? new URL(`../assets/${pokemon.backgroundSrc}`, import.meta.url).href
+          : null;
+        const pageContentStyle = bgImage
+          ? {
+              backgroundImage: `url(${bgImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }
+          : (pokemon.background ? { background: pokemon.background } : {});
+
+        return (
+          <div className="page" key={pokemon.id} style={{ background: 'transparent' }}>
+            <div className="page-content" style={pageContentStyle}>
+            <div className="pokemon-container">
+              <img src={pokemon.image} alt={pokemon.name} loading="lazy" decoding="async" />
+              <div className="pokemon-info">
+                <h2 className="pokemon-name">{pokemon.name}</h2>
+                <p className="pokemon-number">#{pokemon.id}</p>
+                <div>
+                  {pokemon.types.map((type) => (
+                    <span key={type} className={`pokemon-type type-${type.toLowerCase()}`}>
+                      {type}
+                    </span>
+                  ))}
+                </div>
+                <p className="pokemon-description">{pokemon.description}</p>
+              </div>
+            </div>
+            </div>
+          </div>
+        );
+      })}
+    </HTMLFlipBook>
+  );
+}
+
+export default Book

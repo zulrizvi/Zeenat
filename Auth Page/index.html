@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gate of Memories</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page">
+        <div class="page__glow"></div>
+        <figure class="page__ornament page__ornament--left">
+            <img src="assets/Purple and Green Floral Illustrative Save Our Nature Presentation (4).png" alt="Left floral illustration">
+        </figure>
+        <figure class="page__ornament page__ornament--top">
+            <img src="assets/Purple and Green Floral Illustrative Save Our Nature Presentation (6).png" alt="Top floral illustration">
+        </figure>
+        <figure class="page__ornament page__ornament--right">
+            <img src="assets/Purple and Green Floral Illustrative Save Our Nature Presentation (5).png" alt="Right floral illustration">
+        </figure>
+        <section class="card" aria-labelledby="cardTitle" aria-describedby="cardPrompt">
+            <header class="card__header">
+                <p class="card__eyebrow">Aapke liye Surprise</p>
+                <h1 id="cardTitle">Rukiye Bandariya</h1>
+                <p id="cardPrompt" class="card__subtitle">Pehle apne aziiz dost ka naam to bataiye.</p>
+            </header>
+            <form id="authForm" class="card__form" autocomplete="off">
+                <label class="sr-only" for="authInput">Your best friend name</label>
+                <input type="text" id="authInput" name="friendName" placeholder="Hint: Chal koi hint nahi milega" required>
+                <button type="submit" class="card__button">Unlock the celebration</button>
+            </form>
+            <p id="authMessage" class="card__message" role="alert" aria-live="polite"></p>
+            <footer class="card__footer">
+                <button type="button" class="card__retry" id="resetHint" hidden>Start over</button>
+            </footer>
+        </section>
+        <figure class="page__ornament page__ornament--bottom">
+            <img src="assets/Purple and Green Floral Illustrative Save Our Nature Presentation (2).png" alt="Bottom floral illustration">
+        </figure>
+        <figure class="page__ornament page__ornament--halo">
+            <img src="assets/Purple and Green Floral Illustrative Save Our Nature Presentation (1).png" alt="Aura floral illustration">
+        </figure>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

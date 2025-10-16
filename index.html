@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Zeenat!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Cinematic Video -->
+        <video class="cinematic-video" id="cinematicVideo" muted preload="auto" playsinline>
+            <source src="assets/A_cinematic_highresolution_202509051735.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Background Nature Audio (synced with video) -->
+        <audio id="backgroundAudio" preload="auto">
+            <source src="assets/nature.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Interactive Overlay -->
+        <div class="interactive-overlay" id="interactiveOverlay">
+            <!-- Clickable Dandelion Area -->
+            <div class="dandelion-hotspot" id="dandelionHotspot">
+                <div class="glow-effect"></div>
+                <div class="click-hint">
+                    <span class="hint-text">Click bhi to kijiye na</span>
+                    <div class="pulse-ring"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading Screen -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p>Jii Jii aap hi ke liye hai wait...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

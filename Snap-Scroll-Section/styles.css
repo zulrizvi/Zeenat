@@ -1,0 +1,302 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Hide fullPage.js watermark */
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span,
+#fp-nav ul li .fp-tooltip,
+.fp-auto-height.fp-section,
+.fp-watermark {
+    display: none !important;
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: #000;
+    color: #fff;
+    cursor: url('../assets/tulip-cursor.png') 16 16, url('../assets/tulip-cursor.png') 16 16, auto;
+}
+
+/* Global gradient glow (moon + city colors) */
+:root{
+  /* hot pink -> rosy -> violet */
+  --glow-1:#ff2f92;
+  --glow-2:#ff78c8;
+  --glow-3:#7a5cff;
+  --glow-inner: rgba(255,47,146,.75);
+  --glow-outer: rgba(122,92,255,.55);
+}
+
+/* Apply to any text element you want glowing on hover */
+.glow-hover{
+  transition: color .25s ease, text-shadow .25s ease, background-size .35s ease, background-position .35s ease, border-color .25s ease, opacity .25s ease;
+}
+.glow-container{ pointer-events: none; }
+.text-fill{
+  display: inline-block;     /* use element box not full line box */
+  pointer-events: auto;      /* allow hover only on the letters */
+  line-height: 1;            /* remove extra top/bottom leading */
+  margin: 0; padding: 0;     /* avoid accidental expansion */
+  vertical-align: baseline;  /* align to the text baseline */
+}
+.glow-hover:hover{
+  background-image: linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
+  -webkit-text-fill-color: transparent; /* Safari/iOS */
+  /* remove glow */
+  text-shadow: none;
+  /* make image/gradient fit nicely inside text */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* CTA underline to reflect glow on hover */
+.cta.glow-hover:hover{ border-color: var(--glow-2); }
+.contact.glow-hover:hover{ border-color: var(--glow-2); }
+
+/* Section-specific image text fills on hover (override gradient) */
+#section1 .glow-hover:hover{
+  background-image: url('../Images-Snap-Scroll/image-3.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
+  background-size: cover; /* fill text nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#section2 .glow-hover:hover{
+  background-image: url('../Images-Snap-Scroll/image-4fill.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#section3 .glow-hover:hover{
+  background-image: url('../Images-Snap-Scroll/image-6fill.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* top-right nav */
+.nav { position: fixed; top: 18px; right: 22px; z-index: 1000; display: flex; gap: 16px; }
+.nav a { color: #fff; text-decoration: none; font-size: 14px; opacity: 0.9; padding: 6px 4px; }
+.nav a:hover { opacity: 1; text-decoration: underline; text-decoration-color: var(--glow-2); text-underline-offset: 3px; }
+
+/* fullpage sections */
+.section { 
+    position: relative; 
+    height: 100vh; 
+    overflow: hidden; 
+    min-height: 600px;
+}
+.hero .bg { 
+    position: absolute; 
+    inset: 0; 
+}
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.bg img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+/* content layout like the screenshots */
+.content { position: relative; z-index: 5; max-width: min(1200px, 90vw); margin: 0 auto; padding: 0 24px; }
+.content > * { opacity: 0; }
+.content.left { margin-left: 6vw; }
+.eyebrow { font-size: 18px; letter-spacing: 0.08em; text-transform: none; opacity: 0.9; margin-bottom: 10px; }
+.eyebrow.dark { color: #111; }
+.hero h1 { font-weight: 800; line-height: 0.95; font-size: clamp(36px, 8vw, 84px); text-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+.hero h1.dark { color: #111; text-shadow: none; }
+.copy { margin-top: 18px; max-width: 420px; line-height: 1.6; opacity: 0.92; }
+.copy.dark { color: #1a1a1a; opacity: 0.9; }
+.cta { display: inline-block; margin-top: 16px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.7); padding-bottom: 2px; }
+.cta.dark { color: #111; border-color: rgba(0,0,0,.5); }
+
+/* sides */
+.side { position: absolute; top: 50%; transform: translateY(-50%) rotate(-90deg); font-size: 12px; letter-spacing: .2em; opacity: .8; z-index: 6; }
+.side.left { left: 10px; transform-origin: left top; }
+.side.right { right: 10px; transform-origin: right top; }
+.side.dark { color: #222; opacity: .7; }
+
+/* footer social + contact */
+.footer { position: absolute; left: 0; right: 0; bottom: 22px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; z-index: 6; font-size: 14px; opacity: .95; }
+.footer.dark { color: #111; }
+.footer .contact { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+/* light section background text colors */
+.light { color: #111; }
+
+/* subtle intro motion on first hero */
+#section1 .layer[data-depth="0.15"] { animation: kb 22s ease-in-out infinite alternate; transform-origin: center; }
+@keyframes kb { from { transform: scale(1) } to { transform: scale(1.15) } }
+
+img[alt="mid1"] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  object-fit: contain;
+  object-position: center bottom;
+}
+img[alt="fg3"] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+/* Initially hide foreground layers that will be animated in */
+.foreground-anim {
+  visibility: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .layer {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+}
+
+@media (max-height: 600px) {
+  .section {
+    min-height: 100vh;
+  }
+  .layer {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+}
+
+/* Petal landing effect */
+#petal-landing-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.landing-petal {
+  position: absolute;
+  width: 40px;
+  height: 60px;
+  background: linear-gradient(135deg, #ffeb12 0%, #ffce00 100%);
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 5px 20px rgba(255, 235, 18, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.3);
+  opacity: 0;
+}
+
+@keyframes petalLand {
+  0% {
+    transform: translate(-50%, -100vh) rotate(0deg) scale(0.2);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    transform: translate(-50%, 40vh) rotate(720deg) scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-50%, 50vh) rotate(900deg) scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, 100vh) rotate(1080deg) scale(0);
+    opacity: 0;
+  }
+}
+
+.landing-petal.animate {
+  animation: petalLand 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Audio Control Button Row */
+.audio-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  margin-bottom: 2px;
+}
+
+/* Audio Control Button */
+.audio-control {
+  position: static;
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.audio-control:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.audio-control.dark {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.audio-control.dark:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #fff;
+}
+
+.audio-control.playing {
+  animation: audioWave 1.5s ease-in-out infinite;
+}
+
+@keyframes audioWave {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+  }
+}
+
+.audio-control.dark.playing {
+  animation: audioWaveDark 1.5s ease-in-out infinite;
+}
+
+@keyframes audioWaveDark {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+  }
+}
