@@ -59,19 +59,19 @@ body {
 
 /* Section-specific image text fills on hover (override gradient) */
 #section1 .glow-hover:hover{
-  background-image: url('../Images-Snap-Scroll/image-3.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
+  background-image: url('../Images-Snap-Scroll/Image-3.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
   background-size: cover; /* fill text nicely */
   background-position: center;
   background-repeat: no-repeat;
 }
 #section2 .glow-hover:hover{
-  background-image: url('../Images-Snap-Scroll/image-4fill.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
+  background-image: url('../Images-Snap-Scroll/Image-4fill.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 #section3 .glow-hover:hover{
-  background-image: url('../Images-Snap-Scroll/image-6fill.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
+  background-image: url('../Images-Snap-Scroll/Image-6fill.png'), linear-gradient(90deg,var(--glow-1),var(--glow-2),var(--glow-3));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
