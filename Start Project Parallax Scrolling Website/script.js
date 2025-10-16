@@ -453,9 +453,10 @@ function initFlipbookModal() {
 	const hint = document.getElementById('flipbookHint');
 	if (!trigger || !modal || !frame) return;
 
-	// Prefer Vite dev server (default 5173). Keep built output as fallback reference
+	// Prefer Vite dev server (default 5173). Use built output at the absolute deployed path as fallback
 	const devURL = 'http://localhost:5173/';
-	const builtIndex = '../react-page-flip-main/dist/index.html';
+	// Vercel exposes the built React app under /react-page-flip-main/ (see build output). Use absolute path so iframe can find it.
+	const builtIndex = '/react-page-flip-main/index.html';
 
 	// Hide hint once iframe loads
 	frame.addEventListener('load', () => { if (hint) hint.style.display = 'none'; });
