@@ -58,16 +58,18 @@ async function main() {
     throw new Error('React dist directory not found. Ensure the Vite build ran successfully.');
   }
 
-  // Copy hashed assets to root /assets so hashed paths resolve
-  const distAssets = path.join(reactDistDir, 'assets');
-  if (fs.existsSync(distAssets)) {
-    await copyRecursive(distAssets, path.join(outDir, 'assets'));
-  }
-
-  // Copy flipbook index into its own subdirectory to avoid clobbering root index
+  // Copy the entire flipbook build for iframe usage
   const flipbookDir = path.join(outDir, 'flipbook');
-  await fsp.mkdir(flipbookDir, { recursive: true });
-  await copyRecursive(path.join(reactDistDir, 'index.html'), path.join(flipbookDir, 'index.html'));
+  await copyRecursive(reactDistDir, flipbookDir);
+
+  // Ensure assets referenced with absolute paths (e.g. "/assets/..." or "/1.jpg")
+  const distEntries = await fsp.readdir(reactDistDir);
+  for (const entry of distEntries) {
+    if (entry === 'index.html') continue;
+    const sourcePath = path.join(reactDistDir, entry);
+    const destPath = path.join(outDir, entry);
+    await copyRecursive(sourcePath, destPath);
+  }
 
   console.log('web-dist prepared successfully');
 }

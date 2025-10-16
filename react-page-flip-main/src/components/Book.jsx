@@ -54,18 +54,20 @@ function Book() {
           <div className="page" key={pokemon.id} style={{ background: 'transparent' }}>
             <div className="page-content" style={pageContentStyle}>
             <div className="pokemon-container">
-              <img src={pokemon.image} alt={pokemon.name} loading="lazy" decoding="async" />
+              <div className="pokemon-art">
+                <img src={pokemon.image} alt={pokemon.name} loading="lazy" decoding="async" />
+              </div>
               <div className="pokemon-info">
-                <h2 className="pokemon-name" style={{ color: '#fff' }}>{pokemon.name}</h2>
-                <p className="pokemon-number" style={{ color: '#fff' }}>#{pokemon.id}</p>
+                <h2 className="pokemon-name">{pokemon.name}</h2>
+                <p className="pokemon-number">#{pokemon.id}</p>
                 <div>
                   {pokemon.types.map((type) => (
-                    <span key={type} className={`pokemon-type type-${type.toLowerCase()}`} style={{ color: '#fff' }}>
+                    <span key={type} className={`pokemon-type type-${type.toLowerCase()}`}>
                       {type}
                     </span>
                   ))}
                 </div>
-                <p className="pokemon-description" style={{ color: '#fff' }}>{pokemon.description}</p>
+                <p className="pokemon-description">{pokemon.description}</p>
               </div>
             </div>
             </div>
