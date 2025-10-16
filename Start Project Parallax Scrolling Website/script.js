@@ -462,12 +462,15 @@ function initFlipbookModal() {
 
 	const openModal = (e) => {
 		e && e.preventDefault();
-		// Load once
-		if (!frame.src) {
-			// Point to dev server; if not running, user can build or start dev
-			frame.src = devURL;
-			if (hint) hint.style.display = 'block';
-		}
+			// Load once: use the Vite dev server only when running locally (localhost).
+			// In production (deployed on Vercel) we should point the iframe to the built flipbook index.
+			if (!frame.src) {
+				const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+				const defaultSrc = isLocal ? devURL : builtIndex; // dev for local dev, built index for deployed site
+				frame.src = defaultSrc;
+				// show the hint only when pointing at the dev server so users know it's a live preview
+				if (hint && isLocal) hint.style.display = 'block';
+			}
 		modal.setAttribute('aria-hidden', 'false');
 		document.documentElement.style.overflow = 'hidden';
 	};
