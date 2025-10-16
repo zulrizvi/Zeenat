@@ -1,13 +1,10 @@
 {
-		"builds": [
-			{
-				"src": "react-page-flip-main/package.json",
-				"use": "@vercel/static-build",
-				"config": {
-					"distDir": "react-page-flip-main/dist"
+			"builds": [
+				{
+						"src": "react-page-flip-main/package.json",
+					"use": "@vercel/static-build"
 				}
-			}
-		],
+			],
 	"routes": [
 		{ "handle": "filesystem" },
 		{ "src": "/.*", "dest": "/index.html" }
